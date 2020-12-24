@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 
 ViroARTrackingTargets.createTargets({
 	poster: {
-		source: require('../res/colak.jpg'),
+		source: require('../res/djuric.png'),
 		orientation: 'Up',
 		physicalWidth: 0.17,
 	},
