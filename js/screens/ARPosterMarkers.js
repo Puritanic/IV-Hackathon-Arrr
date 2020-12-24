@@ -51,15 +51,23 @@ class ARPosterDemo extends Component {
 		}
 	};
 
-	getARScene = () => {
+	render() {
 		return (
-			<ViroNode>
-				<NatasaMarker />
-				<MarinaMarker />
-				<ViroQuad position={[0, 0, 0]} rotation={[-90, 0, 0]} height={10} width={10} arShadowReceiver={true} />
-			</ViroNode>
+			<ViroARScene onTrackingUpdated={this._onInitialized}>
+				<ViroNode>
+					<NatasaMarker />
+					<MarinaMarker />
+					<ViroQuad
+						position={[0, 0, 0]}
+						rotation={[-90, 0, 0]}
+						height={10}
+						width={10}
+						arShadowReceiver={true}
+					/>
+				</ViroNode>
+			</ViroARScene>
 		);
-	};
+	}
 }
 
 ViroMaterials.createMaterials({

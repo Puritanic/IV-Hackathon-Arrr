@@ -12,8 +12,8 @@ import { StyleSheet } from 'react-native';
 
 export class MarinaMarker extends Component {
 	state = {
-		runAnimation: false
-	}
+		runAnimation: false,
+	};
 	_onAnchorFound = () => {
 		console.log('%c marina: ', 'background: red; color: white');
 		setTimeout(() => {
@@ -86,11 +86,11 @@ ViroARTrackingTargets.createTargets({
 });
 
 ViroAnimations.registerAnimations({
-	animateImage:{
-		properties:{
+	animateImage: {
+		properties: {
 			positionX: 0.055,
 			positionY: 0.02,
-			opacity: 1.0
+			opacity: 1.0,
 		},
 		easing: 'Bounce',
 		duration: 500,
