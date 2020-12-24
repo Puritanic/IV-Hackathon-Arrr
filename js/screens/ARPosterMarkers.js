@@ -26,6 +26,8 @@ import {
 
 import NatasaMarker from '../markers/natasa';
 import MarinaMarker from '../markers/marina';
+import DjuricMarker from '../markers/djuric';
+import IVLogoMarker from '../markers/logo';
 
 const LoadingComponent = ({ text }) => (
 	<ViroText position={[0, 0, -6]} text={text} width={2} height={2} transformBehaviors={['billboard']} />
@@ -43,6 +45,23 @@ class ARPosterDemo extends Component {
 		return <LoadingComponent text={initialized ? 'Initializing AR...' : 'No Tracking'} />;
 	}
 
+	getARScene() {
+		return (
+			<ViroNode>
+				<NatasaMarker />
+				<MarinaMarker />
+				<DjuricMarker />
+				<IVLogoMarker />
+				<ViroQuad
+					position={[0, 0, 0]}
+					rotation={[-90, 0, 0]}
+					height={10}
+					width={10}
+					arShadowReceiver={true}
+				/>
+			</ViroNode>
+		);
+	}
 	_onInitialized = (state, reason) => {
 		if (state == ViroConstants.TRACKING_NORMAL) {
 			this.setState({ isTracking: true });
@@ -54,17 +73,7 @@ class ARPosterDemo extends Component {
 	render() {
 		return (
 			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				<ViroNode>
-					<NatasaMarker />
-					<MarinaMarker />
-					<ViroQuad
-						position={[0, 0, 0]}
-						rotation={[-90, 0, 0]}
-						height={10}
-						width={10}
-						arShadowReceiver={true}
-					/>
-				</ViroNode>
+				{ this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
 			</ViroARScene>
 		);
 	}
