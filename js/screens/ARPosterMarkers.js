@@ -46,6 +46,7 @@ class ARPosterDemo extends Component {
 			this.setState({ isTracking: false });
 		}
 	};
+
 	render() {
 		return (
 			<ViroARScene onTrackingUpdated={this._onInitialized}>
@@ -79,12 +80,6 @@ class ARPosterDemo extends Component {
 						>
 							<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
 								<ViroFlexView style={styles.cardWrapper}>
-									{/*<ViroImage*/}
-									{/*    height={0.015}*/}
-									{/*    width={0.015}*/}
-									{/*    style={styles.image}*/}
-									{/*    source={require('./res/ja.jpg')}*/}
-									{/*/>*/}
 									<ViroText
 										textClipMode="None"
 										width={0.5}
