@@ -98,7 +98,7 @@ ViroARTrackingTargets.createTargets({
 ViroAnimations.registerAnimations({
 	animateImage: {
 		properties: {
-			positionX: 0.075,
+			positionX: 0.1,
 			positionY: 0.02,
 			opacity: 1.0,
 		},

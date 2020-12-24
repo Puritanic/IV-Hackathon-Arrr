@@ -81,7 +81,7 @@ ViroARTrackingTargets.createTargets({
 	logo: {
 		source: require('../res/hackaton.jpg'),
 		orientation: 'Up',
-		physicalWidth: 0.1,
+		physicalWidth: 0.05,
 	},
 });
 
