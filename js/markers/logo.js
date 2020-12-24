@@ -11,11 +11,9 @@ import {
 import { StyleSheet, Linking } from 'react-native';
 
 export class Logo extends Component {
-	state = {
-		runAnimation: false,
-	};
+	state = { runAnimation: false };
+
 	_onAnchorFound = () => {
-		console.log('%c logo: ', 'background: red; color: white');
 		this.setState({ runAnimation: true });
 	};
 
