@@ -52,20 +52,14 @@ class ARPosterDemo extends Component {
 				<MarinaMarker />
 				<DjuricMarker />
 				<IVLogoMarker />
-				<ViroQuad
-					position={[0, 0, 0]}
-					rotation={[-90, 0, 0]}
-					height={10}
-					width={10}
-					arShadowReceiver={true}
-				/>
+				<ViroQuad position={[0, 0, 0]} rotation={[-90, 0, 0]} height={10} width={10} arShadowReceiver={true} />
 			</ViroNode>
 		);
 	}
 	_onInitialized = (state, reason) => {
-		if (state == ViroConstants.TRACKING_NORMAL) {
+		if (state === ViroConstants.TRACKING_NORMAL) {
 			this.setState({ isTracking: true });
-		} else if (state == ViroConstants.TRACKING_UNAVAILABLE) {
+		} else if (state === ViroConstants.TRACKING_UNAVAILABLE) {
 			this.setState({ isTracking: false });
 		}
 	};
@@ -73,7 +67,7 @@ class ARPosterDemo extends Component {
 	render() {
 		return (
 			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				{ this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
+				{this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
 			</ViroARScene>
 		);
 	}
