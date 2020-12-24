@@ -90,7 +90,7 @@ ViroARTrackingTargets.createTargets({
 	natasa: {
 		source: require('../res/natasa.jpg'),
 		orientation: 'Up',
-		physicalWidth: 0.1,
+		physicalWidth: 0.13,
 		type: 'Image',
 	},
 });
