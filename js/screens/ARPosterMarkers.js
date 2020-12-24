@@ -7,7 +7,6 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 
 import {
 	ViroARScene,
@@ -36,10 +35,12 @@ class ARPosterDemo extends Component {
 		initialized: false,
 		runAnimation: false,
 	};
+
 	getNoTrackingUI() {
 		const { isTracking, initialized } = this.state;
 		return <LoadingComponent text={initialized ? 'Initializing AR...' : 'No Tracking'} />;
 	}
+
 	_onInitialized = (state, reason) => {
 		if (state == ViroConstants.TRACKING_NORMAL) {
 			this.setState({ isTracking: true });
@@ -47,24 +48,6 @@ class ARPosterDemo extends Component {
 			this.setState({ isTracking: false });
 		}
 	};
-
-	render() {
-		return (
-			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				<ViroDirectionalLight
-					color="#777777"
-					direction={[0, -1, -2]}
-					shadowOrthographicPosition={[0, 8, -5]}
-					shadowOrthographicSize={10}
-					shadowNearZ={2}
-					shadowFarZ={9}
-					lightInfluenceBitMask={2}
-					castsShadow={true}
-				/>
-				{!this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
-			</ViroARScene>
-		);
-	}
 
 	getARScene = () => {
 		return (
@@ -91,6 +74,24 @@ class ARPosterDemo extends Component {
 			});
 		}, 1500);
 	};
+
+	render() {
+		return (
+			<ViroARScene onTrackingUpdated={this._onInitialized}>
+				<ViroDirectionalLight
+					color="#777777"
+					direction={[0, -1, -2]}
+					shadowOrthographicPosition={[0, 8, -5]}
+					shadowOrthographicSize={10}
+					shadowNearZ={2}
+					shadowFarZ={9}
+					lightInfluenceBitMask={2}
+					castsShadow={true}
+				/>
+				{!this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
+			</ViroARScene>
+		);
+	}
 }
 
 ViroARTrackingTargets.createTargets({
