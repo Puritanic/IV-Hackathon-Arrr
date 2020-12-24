@@ -16,11 +16,9 @@ export class MarinaMarker extends Component {
 	};
 	_onAnchorFound = () => {
 		console.log('%c marina _onAnchorFound: ', 'background: red; color: white');
-		setTimeout(() => {
-			this.setState({
-				runAnimation: true,
-			});
-		}, 1500);
+		this.setState({
+			runAnimation: true,
+		});
 	};
 
 	_onAnchorRemoved = () => {
@@ -46,10 +44,10 @@ export class MarinaMarker extends Component {
 							run: this.state.runAnimation,
 						}}
 					>
-						<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
+						<ViroFlexView rotation={[-90, 0, 0]} height={0.1} width={0.1} style={styles.card}>
 							<ViroImage
-								height={0.015}
-								width={0.015}
+								height={0.05}
+								width={0.08}
 								style={styles.image}
 								source={require('../res/marina_info.jpg')}
 							/>
@@ -100,7 +98,7 @@ ViroARTrackingTargets.createTargets({
 ViroAnimations.registerAnimations({
 	animateImage: {
 		properties: {
-			positionX: 0.055,
+			positionX: 0.075,
 			positionY: 0.02,
 			opacity: 1.0,
 		},

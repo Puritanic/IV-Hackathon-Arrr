@@ -15,12 +15,10 @@ export class Djuric extends Component {
 		runAnimation: false,
 	};
 	_onAnchorFound = () => {
-		console.log('%c djuric: ', 'background: red; color: white');
-		setTimeout(() => {
-			this.setState({
-				runAnimation: true,
-			});
-		}, 1500);
+		console.log('%c djuric3: ', 'background: red; color: white');
+		this.setState({
+			runAnimation: true,
+		});
 	};
 
 	render() {
@@ -35,10 +33,10 @@ export class Djuric extends Component {
 							run: this.state.runAnimation,
 						}}
 					>
-						<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
+						<ViroFlexView rotation={[-90, 0, 0]} height={0.1} width={0.1} style={styles.card}>
 							<ViroImage
-								height={0.015}
-								width={0.015}
+								height={0.05}
+								width={0.06}
 								style={styles.image}
 								source={require('../res/speak-bubble-zdravo-png.png')}
 							/>
@@ -79,9 +77,9 @@ const styles = StyleSheet.create({
 
 ViroARTrackingTargets.createTargets({
 	poster: {
-		source: require('../res/djuric.jpg'),
+		source: require('../res/colak.jpg'),
 		orientation: 'Up',
-		physicalWidth: 0.1,
+		physicalWidth: 0.17,
 	},
 });
 
