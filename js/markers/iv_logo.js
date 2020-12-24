@@ -10,7 +10,7 @@ import {
 } from 'react-viro';
 import { StyleSheet, Linking } from 'react-native';
 
-export class Logo extends Component {
+export class IVLogo extends Component {
 	state = { runAnimation: false };
 
 	_onAnchorFound = () => {
@@ -23,7 +23,7 @@ export class Logo extends Component {
 
 	render() {
 		return (
-			<ViroARImageMarker target={'logo'} onAnchorFound={this._onAnchorFound}>
+			<ViroARImageMarker target={'iv_logo'} onAnchorFound={this._onAnchorFound}>
 				<ViroNode key="card">
 					<ViroNode
 						opacity={0}
@@ -38,7 +38,7 @@ export class Logo extends Component {
 								height={0.1}
 								width={0.1}
 								style={styles.image}
-								source={require('../res/hackathon_img.png')}
+								source={require('../res/IV.png')}
 								onClick={this.onClick}
 							/>
 						</ViroFlexView>
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
 });
 
 ViroARTrackingTargets.createTargets({
-	logo: {
-		source: require('../res/hackaton.jpg'),
+	iv_logo: {
+		source: require('../res/IV_1.png'),
 		orientation: 'Up',
 		physicalWidth: 0.1,
 	},
@@ -105,4 +105,4 @@ ViroAnimations.registerAnimations({
 	},
 });
 
-export default Logo;
+export default IVLogo;
