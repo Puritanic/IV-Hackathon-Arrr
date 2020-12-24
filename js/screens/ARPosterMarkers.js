@@ -201,14 +201,14 @@ ViroARTrackingTargets.createTargets({
 	poster : {
 		source : require('./res/nikola.png'),
 		orientation : "Up",
-		physicalWidth : 0.03
+		physicalWidth : 0.06
 	}
 });
 
 ViroAnimations.registerAnimations({
 	animateImage:{
 		properties:{
-			positionX: 1.2,
+			positionX: 0.05,
 			opacity: 1.0
 		},
 		easing:"Bounce",
