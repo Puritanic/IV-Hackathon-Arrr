@@ -8,7 +8,7 @@ import { ViroARSceneNavigator } from 'react-viro';
  */
 var sharedProps = { apiKey: 'API_KEY_HERE' };
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('./js/screens/HelloWorldSceneAR');
+var InitialARScene = require('./js/screens/ARPosterMarkers');
 var UNSET = 'UNSET';
 
 // This determines which type of experience to launch in, or UNSET, if the user should
