@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 export class NikolaMarker extends Component {
 	render() {
 		return (
-			<ViroARImageMarker target={'poster'} onAnchorFound={this.props.onAnchorFound}>
+			<ViroARImageMarker target={'nikola'} onAnchorFound={this.props.onAnchorFound}>
 				<ViroNode key="card" onTouch={() => alert('twitter')}>
 					<ViroNode
 						opacity={0}

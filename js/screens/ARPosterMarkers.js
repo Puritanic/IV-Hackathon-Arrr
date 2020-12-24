@@ -95,7 +95,7 @@ class ARPosterDemo extends Component {
 }
 
 ViroARTrackingTargets.createTargets({
-	poster: {
+	nikola: {
 		source: require('../res/nikola.png'),
 		orientation: 'Up',
 		physicalWidth: 0.06,
