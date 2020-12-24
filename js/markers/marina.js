@@ -15,7 +15,7 @@ export class MarinaMarker extends Component {
 		runAnimation: false,
 	};
 	_onAnchorFound = () => {
-		console.log('%c marina: ', 'background: red; color: white');
+		console.log('%c marina _onAnchorFound: ', 'background: red; color: white');
 		setTimeout(() => {
 			this.setState({
 				runAnimation: true,
@@ -23,9 +23,20 @@ export class MarinaMarker extends Component {
 		}, 1500);
 	};
 
+	_onAnchorRemoved = () => {
+		console.log('%c marina _onAnchorRemoved: ', 'background: red; color: white');
+		this.setState({
+			runAnimation: false,
+		});
+	};
+
 	render() {
 		return (
-			<ViroARImageMarker target={'marina'} onAnchorFound={this._onAnchorFound}>
+			<ViroARImageMarker
+				target={'marina'}
+				onAnchorFound={this._onAnchorFound}
+				onAnchorRemoved={this._onAnchorRemoved}
+			>
 				<ViroNode key="card" onTouch={() => alert('twitter')}>
 					<ViroNode
 						opacity={0}
@@ -82,6 +93,7 @@ ViroARTrackingTargets.createTargets({
 		source: require('../res/marina.jpg'),
 		orientation: 'Up',
 		physicalWidth: 0.1,
+		type: 'Image',
 	},
 });
 

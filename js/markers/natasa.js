@@ -12,10 +12,10 @@ import { StyleSheet } from 'react-native';
 
 export class NatasaMarker extends Component {
 	state = {
-		runAnimation: false
-	}
+		runAnimation: false,
+	};
 	_onAnchorFound = () => {
-		console.log('%c natasa: ', 'background: red; color: white');
+		console.log('%c natasa _onAnchorFound: ', 'background: red; color: white');
 		setTimeout(() => {
 			this.setState({
 				runAnimation: true,
@@ -23,9 +23,20 @@ export class NatasaMarker extends Component {
 		}, 1500);
 	};
 
+	_onAnchorRemoved = () => {
+		console.log('%c natasa _onAnchorRemoved: ', 'background: red; color: white');
+		this.setState({
+			runAnimation: false,
+		});
+	};
+
 	render() {
 		return (
-			<ViroARImageMarker target={'natasa'} onAnchorFound={this._onAnchorFound}>
+			<ViroARImageMarker
+				target={'natasa'}
+				onAnchorFound={this._onAnchorFound}
+				onAnchorRemoved={this._onAnchorRemoved}
+			>
 				<ViroNode key="card" onTouch={() => alert('twitter')}>
 					<ViroNode
 						opacity={0}
@@ -82,15 +93,16 @@ ViroARTrackingTargets.createTargets({
 		source: require('../res/natasa.jpg'),
 		orientation: 'Up',
 		physicalWidth: 0.1,
+		type: 'Image',
 	},
 });
 
 ViroAnimations.registerAnimations({
-	animateImage:{
-		properties:{
+	animateImage: {
+		properties: {
 			positionX: 0.055,
 			positionY: 0.02,
-			opacity: 1.0
+			opacity: 1.0,
 		},
 		easing: 'Bounce',
 		duration: 500,
