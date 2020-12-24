@@ -24,6 +24,7 @@ import {
 	ViroMaterials,
 	ViroConstants,
 } from 'react-viro';
+import NikolaMarker from '../markers/Nikola';
 
 const LoadingComponent = ({ text }) => (
 	<ViroText position={[0, 0, -6]} text={text} width={2} height={2} transformBehaviors={['billboard']} />
@@ -68,62 +69,7 @@ class ARPosterDemo extends Component {
 	getARScene = () => {
 		return (
 			<ViroNode>
-				<ViroARImageMarker target={'poster'} onAnchorFound={this._onAnchorFound}>
-					<ViroNode key="card" onTouch={() => alert('twitter')}>
-						<ViroNode
-							opacity={0}
-							position={[0, -0.02, 0]}
-							animation={{
-								name: 'animateImage',
-								run: this.state.runAnimation,
-							}}
-						>
-							<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
-								<ViroFlexView style={styles.cardWrapper}>
-									<ViroText
-										textClipMode="None"
-										width={0.5}
-										text="Hello, my name is Nikola"
-										scale={[0.015, 0.015, 0.015]}
-										style={styles.textStyle}
-									/>
-								</ViroFlexView>
-								<ViroFlexView style={styles.subText}>
-									<ViroText
-										width={0.04}
-										height={0.01}
-										textAlign="left"
-										textClipMode="None"
-										text={`Caossssssss`}
-										scale={[0.01, 0.01, 0.01]}
-										style={styles.textStyle}
-									/>
-									<ViroAnimatedImage
-										height={0.05}
-										width={0.05}
-										loop={true}
-										source={require('../res/hello.gif')}
-									/>
-								</ViroFlexView>
-							</ViroFlexView>
-						</ViroNode>
-						<ViroNode
-							opacity={0}
-							position={[0, 0, 0]}
-							animation={{
-								name: 'animateViro',
-								run: this.state.runAnimation,
-							}}
-						>
-							<ViroText
-								text="Simple text"
-								rotation={[-90, 0, 0]}
-								scale={[0.01, 0.01, 0.01]}
-								style={styles.textStyle}
-							/>
-						</ViroNode>
-					</ViroNode>
-				</ViroARImageMarker>
+				<NikolaMarker onAnchorFound={this._onAnchorFound} runAnimation={this.state.runAnimation} />
 				<ViroQuad position={[0, 0, 0]} rotation={[-90, 0, 0]} height={10} width={10} arShadowReceiver={true} />
 			</ViroNode>
 		);
