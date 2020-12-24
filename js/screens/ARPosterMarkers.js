@@ -7,9 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 import React, { Component } from 'react';
-import {
-	StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import {
 	ViroARScene,
@@ -24,47 +22,44 @@ import {
 	ViroAnimatedImage,
 	ViroQuad,
 	ViroMaterials,
-	ViroConstants
+	ViroConstants,
 } from 'react-viro';
 
 const LoadingComponent = ({ text }) => (
-	<ViroText position={[0,0,-6]} text={text} width={2} height={2} transformBehaviors={["billboard"]}/>
-)
+	<ViroText position={[0, 0, -6]} text={text} width={2} height={2} transformBehaviors={['billboard']} />
+);
 
 class ARPosterDemo extends Component {
-	state =  {
+	state = {
 		isTracking: false,
 		initialized: false,
 		runAnimation: false,
 	};
-	getNoTrackingUI(){
+	getNoTrackingUI() {
 		const { isTracking, initialized } = this.state;
-		return (
-			<LoadingComponent text={initialized ? 'Initializing AR...'
-				: "No Tracking"}/>
-		)
+		return <LoadingComponent text={initialized ? 'Initializing AR...' : 'No Tracking'} />;
 	}
 	_onInitialized = (state, reason) => {
 		if (state == ViroConstants.TRACKING_NORMAL) {
-			this.setState({isTracking: true})
+			this.setState({ isTracking: true });
 		} else if (state == ViroConstants.TRACKING_UNAVAILABLE) {
-			this.setState({isTracking: false})
+			this.setState({ isTracking: false });
 		}
-	}
+	};
 	render() {
 		return (
 			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				<ViroDirectionalLight color="#777777"
-									  direction={[0, -1, -2]}
-									  shadowOrthographicPosition={[0, 8, -5]}
-									  shadowOrthographicSize={10}
-									  shadowNearZ={2}
-									  shadowFarZ={9}
-									  lightInfluenceBitMask={2}
-									  castsShadow={true}
+				<ViroDirectionalLight
+					color="#777777"
+					direction={[0, -1, -2]}
+					shadowOrthographicPosition={[0, 8, -5]}
+					shadowOrthographicSize={10}
+					shadowNearZ={2}
+					shadowFarZ={9}
+					lightInfluenceBitMask={2}
+					castsShadow={true}
 				/>
-				{ !this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
-
+				{!this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
 			</ViroARScene>
 		);
 	}
@@ -72,25 +67,18 @@ class ARPosterDemo extends Component {
 	getARScene = () => {
 		return (
 			<ViroNode>
-				<ViroARImageMarker target={"poster"} onAnchorFound={this._onAnchorFound}
-				>
-					<ViroNode key="card" onTouch={() => alert("twitter")}>
+				<ViroARImageMarker target={'poster'} onAnchorFound={this._onAnchorFound}>
+					<ViroNode key="card" onTouch={() => alert('twitter')}>
 						<ViroNode
-							opacity={0} position={[0, -0.02, 0]}
+							opacity={0}
+							position={[0, -0.02, 0]}
 							animation={{
-								name:'animateImage',
-								run: this.state.runAnimation
+								name: 'animateImage',
+								run: this.state.runAnimation,
 							}}
 						>
-							<ViroFlexView
-								rotation={[-90, 0, 0]}
-								height={0.03}
-								width={0.05}
-								style={styles.card}
-							>
-								<ViroFlexView
-									style={styles.cardWrapper}
-								>
+							<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
+								<ViroFlexView style={styles.cardWrapper}>
 									{/*<ViroImage*/}
 									{/*    height={0.015}*/}
 									{/*    width={0.015}*/}
@@ -101,78 +89,72 @@ class ARPosterDemo extends Component {
 										textClipMode="None"
 										width={0.5}
 										text="Hello, my name is Nikola"
-										scale={[.015, .015, .015]}
+										scale={[0.015, 0.015, 0.015]}
 										style={styles.textStyle}
 									/>
 								</ViroFlexView>
-								<ViroFlexView
-									style={styles.subText}
-								>
+								<ViroFlexView style={styles.subText}>
 									<ViroText
 										width={0.04}
 										height={0.01}
 										textAlign="left"
 										textClipMode="None"
 										text={`Caossssssss`}
-										scale={[.01, .01, .01]}
+										scale={[0.01, 0.01, 0.01]}
 										style={styles.textStyle}
 									/>
 									<ViroAnimatedImage
 										height={0.05}
 										width={0.05}
 										loop={true}
-										source={require('./res/hello.gif')}
+										source={require('../res/hello.gif')}
 									/>
 								</ViroFlexView>
 							</ViroFlexView>
 						</ViroNode>
-						<ViroNode opacity={0} position={[0, 0, 0]}
-								  animation={{
-									  name:'animateViro',
-									  run: this.state.runAnimation
-								  }}
+						<ViroNode
+							opacity={0}
+							position={[0, 0, 0]}
+							animation={{
+								name: 'animateViro',
+								run: this.state.runAnimation,
+							}}
 						>
-							<ViroText text="Simple text"
-									  rotation={[-90, 0, 0]}
-									  scale={[.01, .01, .01]}
-									  style={styles.textStyle}
+							<ViroText
+								text="Simple text"
+								rotation={[-90, 0, 0]}
+								scale={[0.01, 0.01, 0.01]}
+								style={styles.textStyle}
 							/>
 						</ViroNode>
 					</ViroNode>
 				</ViroARImageMarker>
-				<ViroQuad
-					position={[0,0,0]}
-					rotation={[-90, 0, 0]}
-					height={10}
-					width={10}
-					arShadowReceiver={true}
-				/>
+				<ViroQuad position={[0, 0, 0]} rotation={[-90, 0, 0]} height={10} width={10} arShadowReceiver={true} />
 			</ViroNode>
-		)
-	}
+		);
+	};
 
 	_onAnchorFound = (anchor) => {
-		console.log('%c ARPosterDemo _onAnchorFound: ', "background: red; color: white")
+		console.log('%c ARPosterDemo _onAnchorFound: ', 'background: red; color: white');
 		setTimeout(() => {
 			this.setState({
-				runAnimation: true
+				runAnimation: true,
 			});
-		}, 1500)
+		}, 1500);
 	};
 
 	_onAnchorRemoved = (anchor) => {
 		setTimeout(() => {
 			this.setState({
-				runAnimation: false
+				runAnimation: false,
 			});
-		}, 1500)
+		}, 1500);
 	};
 }
 
-
 var styles = StyleSheet.create({
 	textStyle: {
-		flex: .5,
+		flex: 0.5,
 		fontFamily: 'Roboto',
 		fontSize: 30,
 		color: '#ffffff',
@@ -181,56 +163,56 @@ var styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 	card: {
-		flexDirection: 'column'
+		flexDirection: 'column',
 	},
 	cardWrapper: {
 		flexDirection: 'row',
 		alignItems: 'flex-start',
 		padding: 0.001,
-		flex: .5
+		flex: 0.5,
 	},
 	subText: {
 		flexDirection: 'column',
 		alignItems: 'flex-start',
 		justifyContent: 'flex-start',
-		flex: .5
-	}
+		flex: 0.5,
+	},
 });
 
 ViroARTrackingTargets.createTargets({
-	poster : {
-		source : require('./res/nikola.png'),
-		orientation : "Up",
-		physicalWidth : 0.06
-	}
+	poster: {
+		source: require('../res/nikola.png'),
+		orientation: 'Up',
+		physicalWidth: 0.06,
+	},
 });
 
 ViroAnimations.registerAnimations({
-	animateImage:{
-		properties:{
+	animateImage: {
+		properties: {
 			positionX: 0.05,
-			opacity: 1.0
+			opacity: 1.0,
 		},
-		easing:"Bounce",
-		duration: 500
+		easing: 'Bounce',
+		duration: 500,
 	},
 	animateViro: {
 		properties: {
 			positionZ: 0.1,
 			opacity: 1.0,
 		},
-		easing:"Bounce",
-		duration: 500
-	}});
+		easing: 'Bounce',
+		duration: 500,
+	},
+});
 
 ViroMaterials.createMaterials({
 	imagePlaceholder: {
-		diffuseColor: "rgba(255,255,255,1)"
+		diffuseColor: 'rgba(255,255,255,1)',
 	},
 	quad: {
-		diffuseColor: "rgba(0,0,0,0.5)"
-	}
+		diffuseColor: 'rgba(0,0,0,0.5)',
+	},
 });
 
 module.exports = ARPosterDemo;
-
