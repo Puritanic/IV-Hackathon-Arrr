@@ -8,7 +8,7 @@ import {
 	ViroARTrackingTargets,
 	ViroAnimations,
 } from 'react-viro';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Linking } from 'react-native';
 
 export class Logo extends Component {
 	state = {
@@ -16,17 +16,17 @@ export class Logo extends Component {
 	};
 	_onAnchorFound = () => {
 		console.log('%c logo: ', 'background: red; color: white');
-		setTimeout(() => {
-			this.setState({
-				runAnimation: true,
-			});
-		}, 1500);
+		this.setState({ runAnimation: true });
+	};
+
+	onClick = () => {
+		Linking.openURL('https://sites.google.com/interventure.info/ivhackathon2020/timovi');
 	};
 
 	render() {
 		return (
 			<ViroARImageMarker target={'poster'} onAnchorFound={this._onAnchorFound}>
-				<ViroNode key="card" onTouch={() => alert('twitter')}>
+				<ViroNode key="card">
 					<ViroNode
 						opacity={0}
 						position={[0, -0.02, 0]}
@@ -37,10 +37,11 @@ export class Logo extends Component {
 					>
 						<ViroFlexView rotation={[-90, 0, 0]} height={0.03} width={0.05} style={styles.card}>
 							<ViroImage
-								height={0.015}
-								width={0.015}
+								height={0.1}
+								width={0.1}
 								style={styles.image}
-								source={require('../res/marina_info.jpg')}
+								source={require('../res/hackathon_img.png')}
+								onClick={this.onClick}
 							/>
 						</ViroFlexView>
 					</ViroNode>
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
 		textAlign: 'left',
 		fontWeight: 'bold',
 	},
+	image: {},
 	card: {
 		flexDirection: 'column',
 	},
