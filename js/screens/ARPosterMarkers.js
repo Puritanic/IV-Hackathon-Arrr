@@ -8,21 +8,7 @@
  */
 import React, { Component } from 'react';
 
-import {
-	ViroARScene,
-	ViroNode,
-	ViroARTrackingTargets,
-	ViroARImageMarker,
-	ViroAnimations,
-	ViroDirectionalLight,
-	ViroText,
-	ViroFlexView,
-	ViroImage,
-	ViroAnimatedImage,
-	ViroQuad,
-	ViroMaterials,
-	ViroConstants,
-} from 'react-viro';
+import { ViroARScene, ViroNode, ViroText, ViroQuad, ViroMaterials, ViroConstants } from 'react-viro';
 
 import NatasaMarker from '../markers/natasa';
 import MarinaMarker from '../markers/marina';
