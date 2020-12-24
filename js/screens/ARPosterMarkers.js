@@ -53,7 +53,7 @@ class ARPosterDemo extends Component {
 	render() {
 		return (
 			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				{this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
+				{!this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
 			</ViroARScene>
 		);
 	}

@@ -51,7 +51,7 @@ export class NatasaMarker extends Component {
 								height={0.015}
 								width={0.015}
 								style={styles.image}
-								source={require('../res/IV.png')}
+								source={require('../res/speak-bubble-pesma-mirror-png.png')}
 							/>
 						</ViroFlexView>
 					</ViroNode>

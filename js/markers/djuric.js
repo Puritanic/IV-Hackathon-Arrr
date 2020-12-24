@@ -40,7 +40,7 @@ export class Djuric extends Component {
 								height={0.015}
 								width={0.015}
 								style={styles.image}
-								source={require('../res/marina_info.jpg')}
+								source={require('../res/speak-bubble-zdravo-png.png')}
 							/>
 						</ViroFlexView>
 					</ViroNode>
