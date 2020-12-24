@@ -23,7 +23,9 @@ import {
 	ViroMaterials,
 	ViroConstants,
 } from 'react-viro';
-import NikolaMarker from '../markers/Nikola';
+
+import NatasaMarker from '../markers/natasa';
+import MarinaMarker from '../markers/marina';
 
 const LoadingComponent = ({ text }) => (
 	<ViroText position={[0, 0, -6]} text={text} width={2} height={2} transformBehaviors={['billboard']} />
@@ -52,74 +54,13 @@ class ARPosterDemo extends Component {
 	getARScene = () => {
 		return (
 			<ViroNode>
-				<NikolaMarker onAnchorFound={this._onAnchorFound} runAnimation={this.state.runAnimation} />
+				<NatasaMarker />
+				<MarinaMarker />
 				<ViroQuad position={[0, 0, 0]} rotation={[-90, 0, 0]} height={10} width={10} arShadowReceiver={true} />
 			</ViroNode>
 		);
 	};
-
-	_onAnchorFound = (anchor) => {
-		console.log('%c ARPosterDemo _onAnchorFound: ', 'background: red; color: white');
-		setTimeout(() => {
-			this.setState({
-				runAnimation: true,
-			});
-		}, 1500);
-	};
-
-	_onAnchorRemoved = (anchor) => {
-		setTimeout(() => {
-			this.setState({
-				runAnimation: false,
-			});
-		}, 1500);
-	};
-
-	render() {
-		return (
-			<ViroARScene onTrackingUpdated={this._onInitialized}>
-				<ViroDirectionalLight
-					color="#777777"
-					direction={[0, -1, -2]}
-					shadowOrthographicPosition={[0, 8, -5]}
-					shadowOrthographicSize={10}
-					shadowNearZ={2}
-					shadowFarZ={9}
-					lightInfluenceBitMask={2}
-					castsShadow={true}
-				/>
-				{!this.state.isTracking ? this.getNoTrackingUI() : this.getARScene()}
-			</ViroARScene>
-		);
-	}
 }
-
-ViroARTrackingTargets.createTargets({
-	nikola: {
-		source: require('../res/nikola.png'),
-		orientation: 'Up',
-		physicalWidth: 0.06,
-	},
-});
-
-ViroAnimations.registerAnimations({
-	animateImage: {
-		properties: {
-			positionX: 0.05,
-			opacity: 1.0,
-		},
-		easing: 'Bounce',
-		duration: 500,
-	},
-	animateViro: {
-		properties: {
-			positionZ: 0.1,
-			opacity: 1.0,
-		},
-		easing: 'Bounce',
-		duration: 500,
-	},
-});
 
 ViroMaterials.createMaterials({
 	imagePlaceholder: {
